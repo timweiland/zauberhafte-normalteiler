@@ -137,4 +137,21 @@ headpunct={:}]{myproofstyle} %<---- change this name
         $\implies V' \subset N_G(U)$.
     \end{itemize}
     \end{beweis}
+    \section{Zauberhafte Folgerung}
+    Welcher Mischvorgang muss auf einen aus n Karten bestehenden Kartenstapel angewendet werden, um eine Permutation der Form $\phi_{a,b}$ zu erhalten? 
+    \begin{enumerate}
+    \item Mischvorgang $R_c$: Sei $c \in \mathbb{N}$. Teile die $n$ Karten von links nach rechts auf $c$ Stapel aus. Danach werden die Karten wieder aufgenommen, und zwar von rechts nach links. Nach ganz oben kommt also der am weitesten links liegende Stapel.
+    \item Mischvorgang $L_c$: Genau anders rum, von rechts nach links austeilen, von links nach rechts aufnehmen.
+    \end{enumerate}
+    \textit{(Beispiel vorführen)}
+    \begin{definition} 
+    \begin{enumerate}
+    \item Sei $c$ ein Teiler von $c - 1$ und $a := (n - 1)/n$. Dann sind $a$ und $n$ teilerfremd und $R_c$ entspricht $\phi_{a,a}$.
+    \item Sei $c$ ein Teiler von $c + 1$ und $a := (n + 1)/n$. Dann sind $a$ und $n$ teilerfremd und $L_c$ entspricht $\phi_{-a,-1}$.
+    \end{enumerate}
+    \end{definition}
+    \vspace{2mm}
+    \begin{beweis}
+    
+    \end {beweis}
 \end{document}
