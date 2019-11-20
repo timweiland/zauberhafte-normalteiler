@@ -6,6 +6,7 @@
 \usepackage[german]{babel}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{thmtools}
+\usepackage{graphicx}
 
 
 % figure support
@@ -141,7 +142,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
     Welcher Mischvorgang muss auf einen aus n Karten bestehenden Kartenstapel angewendet werden, um eine Permutation der Form $\phi_{a,b}$ zu erhalten? 
     \begin{enumerate}
     \item Mischvorgang $R_c$: Sei $c \in \mathbb{N}$. Teile die $n$ Karten von links nach rechts auf $c$ Stapel aus. Danach werden die Karten wieder aufgenommen, und zwar von rechts nach links. Nach ganz oben kommt also der am weitesten links liegende Stapel.
-    \item Mischvorgang $L_c$: Genau anders rum, von rechts nach links austeilen, von links nach rechts aufnehmen.
+    \item Mischvorgang $L_c$: Von links nach rechts austeilen, und auch von links nach rechts aufnehmen.
     \end{enumerate}
     \textit{(Beispiel vorführen)}
     \begin{definition} 
@@ -152,6 +153,34 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \end{definition}
     \vspace{2mm}
     \begin{beweis}
-    
+    \begin{itemize}
+    \item i) Teilerfremdheit folgt direkt aus $ac = n - 1$. \\
+    Es gilt dann $n - ac = 1$ (Mit $ggT(a,b) = s\cdot a + t\cdot b, \quad s,t \in \mathbb{Z}$ folgt Teilerfremdheit von a und n. \\
+    Aus der ursprünglichen Reihenfolge der Karten $(0, …,n-1)$ passiert durch $R_c$ folgendes: 
+    \begin{figure}[htbp] 
+  \centering
+     \includegraphics[width=0.7\textwidth]{image1.jpg}
+\end{figure} \\
+Erster Stapel hat $a+1$ Elemente, alle anderen $a$. \\
+$\longrightarrow c$ Stapel von rechts nach links zusammenlegen: \\
+Betrachte Karte $k$ aus dem Stapel $s \quad (s \in \lbrace 1, …, c-2\rbrace)$. Dann liegt die Karte $k+1$ im Stapel $s+1$ genau $a$ Stellen weiter als $k$, da in jedem Stapel außer dem ersten genau $a$ Karten sind. In Stapel 1 gilt zusätzlich Karte 0 liegt $a$ Karten weiter als $ac$. \\
+Die letzte Karte im Stapel ist $c-1$. Zyklisch weiterzählen. Wir sehen dass Karte $c$ die $a-$te Karte von oben ist. \\
+Insgesamt: $R_c(0) = a$ und $R_c(k+1) = R_c(k) + a$. Mit Lemma $4.5$ gilt also $R_c = \phi_{a,a}$.
+    \item ii) Teilerfremdheit folgt direkt aus $ac = n+1$. \\
+    $ac - n = 1$ $\longrightarrow$ wie vorhin \\
+    Aus der ursprünglichen Reihenfolge der Karten $(0, …,n-1)$ passiert durch $L_c$ folgendes: 
+    \begin{figure}[htbp] 
+  \centering
+     \includegraphics[width=0.7\textwidth]{image2.jpg}
+\end{figure} \\
+Letzter Stapel hat $a-1$ Elemente, alle anderen $a$. \\
+Beweis wie vorhin, aber gehe $a$ Karten zurück um von der Karte $k$ zur Karte $k-1$ zu kommen. Mit $L_c(0) = n-1$ folgt $L_c = \phi_{-a,-1}$. (In $\mathbb{Z}_n$ ist $-1\equiv n-1$). \\
+    \textit{Beispiele vorführen}
+    \end{itemize}
     \end {beweis}
+    \underline{Erkenntnis aus 4.3, 4.4, 4.6 (umbenennen):} \\
+    Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert n+1$ durch $x$ teilbar$\rbrace$. \\
+    Wähle $a_1, …. a_r \in A_n$ und $a_1', …, a_l' \in B_n$ aus. Sei $a$ das Produkt aller $a_i$ und $a_j'$. Wähle $c_i$ bzw $c_j'$ sodass $c_ia_i = n-1$, bzw $c_j'a_j' = n+1$. \\
+    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig. \textit{Auf Erkenntnisse aus den jeweiligen Abschnitten verweisen}. \\
+    Für uns von Bedeutung: $a=1$ oder $a=-1 \rightarrow$ Die Karten sind in der gleichen, bzw der gespiegelten zyklischen Reihenfolge.
 \end{document}
