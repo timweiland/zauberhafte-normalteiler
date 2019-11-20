@@ -20,14 +20,17 @@
     \import{./figures/}{#1.pdf_tex}
 }
 
-\declaretheorem[style=plain,numberwithin=section, shaded={rulecolor=Black,rulewidth=0.5pt,margin=0.5em,bgcolor={rgb}{1,1,1}}]{satz}
-\declaretheorem[style=plain,numberwithin=section]{proposition}
-\declaretheorem[style=plain,numberwithin=section]{lemma}
-\declaretheorem[style=plain,numberwithin=section]{korollar}
+\usepackage{setspace}
+\setstretch{1.5}
 
-\declaretheorem[style=definition,numberwithin=section, shaded={rulecolor=Black,rulewidth=0.5pt,margin=0.5em,bgcolor={rgb}{1,1,1}}]{definition}
-\declaretheorem[style=definition,qed=$\diamondsuit$,numberwithin=section]{beispiel}
-\declaretheorem[style=definition,qed=$\triangle$,numberwithin=section]{bemerkung}
+\declaretheorem[style=plain,numberwithin=section, shaded={rulecolor=Black,rulewidth=0.5pt,margin=0.5em,bgcolor={rgb}{1,1,1}}]{satz}
+\declaretheorem[style=plain,numberlike=satz]{proposition}
+\declaretheorem[style=plain,numberlike=satz]{lemma}
+\declaretheorem[style=plain,numberlike=satz]{korollar}
+
+\declaretheorem[style=definition,numberlike=satz, shaded={rulecolor=Black,rulewidth=0.5pt,margin=0.5em,bgcolor={rgb}{1,1,1}}]{definition}
+\declaretheorem[style=definition,numberlike=satz]{beispiel}
+\declaretheorem[style=definition,numberlike=satz]{bemerkung}
 \declaretheorem[style=definition,numbered=no]{erinnerung} \declaretheoremstyle[ spaceabove=-6pt,
 spacebelow=6pt,
 headfont=\normalfont\bfseries,
@@ -44,6 +47,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \newcommand{\O}{\varnothing}
 \newcommand*{\longeq}{\ratio\Longleftrightarrow}
 
+\renewcommand{\labelenumi}{\roman{enumi})}
 
 \pdfsuppresswarningpagegroup=1
 
@@ -76,7 +80,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \begin{enumerate}
         \item $U \subset V$ ($U$ ist in $V$ enthalten)
         \item $U$ ist Normalteiler in $V$
-        \item Ist $V'$ eine weitere Untergruppe von $G$ die 1. und 2. erfüllt, so gilt $V' \subset V$. ($V$ ist größtmöglich)
+        \item Ist $V'$ eine weitere Untergruppe von $G$ die i) und ii) erfüllt, so gilt $V' \subset V$. ($V$ ist größtmöglich)
     \end{enumerate}
 
     \begin{bemerkung}
@@ -93,13 +97,17 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \end{definition}
 
     \begin{satz}
-        $N_G(U)$ ist Untergruppe von G und erfüllt die Eigenschaften 1. bis 3. .
+        $N_G(U)$ ist Untergruppe von G und erfüllt die Eigenschaften i) bis iii).
     \end{satz}
-    \begin{beweis}
-        \underline{Untergruppe:} \\
-        Die Assoziativität wird vererbt. \\
 
-        Es gilt $e \in N_G(U)$, denn $e \in G$ und $e U e^{-1} = e U e = U$. \\
+    \vspace{2mm}
+
+    \begin{beweis}
+        \begin{itemize} 
+            \item \underline{Untergruppe:} \\
+        Die Assoziativität wird vererbt.
+
+        Es gilt $e \in N_G(U)$, denn $e \in G$ und $e U e^{-1} = e U e = U$.
 
         Sei $n \in N_G(U)$. Dann gilt
         \begin{align*}
@@ -107,7 +115,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
             &\iff n^{-1} n U n^{-1} n = n ^{-1} U n \\
             &\iff U = n^{-1} U n
         ,\end{align*}
-        also auch $n^{-1} \in N_G(U)$. \\
+        also auch $n^{-1} \in N_G(U)$.
 
         Seien $n_1, n_2 \in N_G(U)$. Dann gilt:
         \begin{align*}
@@ -119,13 +127,14 @@ headpunct={:}]{myproofstyle} %<---- change this name
         also auch $n_1 \circ n_2 \in N_G(U)$. \\
 
         Damit ist $N_G(U)$ Untergruppe von $G$. \\
-        \underline{1}: \\
+    \item \underline{i)}: \\
         $U$ ist Normalteiler in sich selbst, also gilt $\forall u \in U: u U u^{-1} = U$. Zudem gilt $U \subset G$. Per Definition von $N_G(U)$ folgt sofort $U \subset N_G(U)$. \\
-        \underline{2}: \\
+    \item \underline{ii)}: \\
         Es gilt per Definition $\forall n \in N_G(U): n U n^{-1} = U$, d.h. U ist Normalteiler in $N_G(U)$. \\
-        \underline{3}: \\
+    \item \underline{iii)}: \\
         Sei $V' \subset G$ eine weitere Untergruppe mit $U \subset  V'$ und sodass $U$ Normalteiler in $V'$ ist. \\
         Sei $v \in V'$. Da $U$ Normalteiler in $V'$ ist, gilt $v U v^{-1} = U$, also per Definition $v \in N_G(U)$. \\
         $\implies V' \subset N_G(U)$.
+    \end{itemize}
     \end{beweis}
 \end{document}
