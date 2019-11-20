@@ -138,6 +138,90 @@ headpunct={:}]{myproofstyle} %<---- change this name
         $\implies V' \subset N_G(U)$.
     \end{itemize}
     \end{beweis}
+
+    \begin{satz}
+        Seien $G, U$ und $N_G(U)$ wie gehabt. \\
+        Seien ferner $m \in \N$, $x_1, \ldots, x_m \in N_G(U)$ und $u_0, \ldots, u_m \in U$. Dann gilt für ein geeignetes $u \in U$:
+        \[
+            u_m \circ x_m \circ u_{m-1} \circ x_{m-1} \circ \ldots \circ u_1 \circ x_1 \circ u_0 = x_m \circ \ldots \circ  x_1 \circ u
+        .\] 
+        Insbesondere: \\
+        $x_m \circ \ldots \circ x_1 \in U \implies u_m \circ x_m \circ u_{m-1} \circ x_{m-1} \circ \ldots \circ u_1 \circ x_1 \circ u_0 \in U$.
+    \end{satz}
+
+    \begin{beweis}
+        Vollständige Induktion.
+        \begin{itemize}
+            \item \underline{Induktionsanfang ($m=1$):}
+                Zu zeigen: $u_1 \circ x_1 \circ u_0 = x_1 \circ u$ für ein geeignetes $u \in U$. \\
+                $U$ ist Normalteiler in $N_G(U)$, also gilt $u_1 \circ x_1 = x_1 \circ \hat{u}$ für ein geeignetes $\hat{u} \in U$. Damit gilt 
+                \begin{align*}
+                    u_1 \circ x_1 \circ u_0 &= x_1 \circ \hat{u} \circ u_0 \\
+                                            &= x_1 \circ u
+                \end{align*}
+                mit $u := \hat{u} \circ u_0 \in U$.
+
+            \item \underline{Induktionsschritt ($m \implies m+1$):}
+                Es gilt:
+                \begin{align*}
+                    &\phantom{=} u_{m+1} \circ x_{m+1} \circ u_m \circ x_m \circ \ldots \circ u_1 \circ x_1 \circ u_0 \\
+                    &= u_{m+1} \circ x_{m+1} \circ (u_m \circ x_m \circ \ldots \circ u_1 \circ x_1 \circ u_0) \\
+                    &\overset{I.V.}{=}u_{m+1} \circ x_{m+1} \circ (x_m \circ \ldots \circ x_1 \circ u')  \\
+                    &= (u_{m+1} \circ (x_{m+1} \circ \ldots \circ x_1)) \circ u' \\
+                    &\overset{NT}{=} ((x_{m+1} \circ \ldots \circ x_1) \circ u'') \circ u' \\
+                    &= x_{m+1} \circ \ldots x_1 \circ \underbrace{u'' \circ u'}_{=: u} 
+                .\end{align*}
+                für geeignete $u', u'' \in U$.
+        \end{itemize}
+    \end{beweis}
+
+    \section{Symmetrische Gruppe}
+    Jegliche Operationen, die im Zaubertrick durchgeführt werden, ändern lediglich die Reihenfolge der Karten im Stapel. Zur Modellierung des Tricks genügt es also, die Karten durchzunummerieren. \\
+   
+    \begin{definition}
+    Wir führen Tricks mit $n$ Karten durch und erzeugen beim Mischen Permutationen von  $\{0, \ldots, n-1\}.$ \\
+    Die Gruppe aller dieser Permutationen heißt die \textbf{symmetrische Gruppe} $S_n$. Formal lässt sich mit $\Z_n := \{0, \ldots, n-1\}$ jedes Element von $S_n$ als bijektive Abbildung $\phi : \Z_n &\to \Z_n$ identifizieren.
+    \end{definition}
+
+    \begin{erinnerung}
+        $\Z_n$ wird mit der Addition und Multiplikation modulo $n$ zu einem Ring, dem \textbf{Restklassenring}.
+    \end{erinnerung}
+
+    \begin{definition}
+        Sei $r \in Z_n$.
+         \begin{align*}
+           s_r  : \Z_n &\longrightarrow \Z_n \\
+            k  &\longmapsto s_r(k) = k + r \mod n
+         \end{align*}
+         heißt zyklischer Shift. $s_r$ ist bijektiv, also $s_r \in S_n$.
+    \end{definition}
+
+    \begin{bemerkung}
+        $s_r$ lässt sich interpretieren als
+        \begin{itemize}
+            \item Die untersten $r$ Karten nach oben zu legen
+            \item Die obersten  $n-r$ Karten abzuheben und unter den Stapel zu legen
+        \end{itemize}
+        \textit{Im Vortrag am Beispiel klar machen (Menge $\{0, \ldots n-1\}$ von unten nach oben aufschreiben und Shift mit z.B. r = 3 anwenden)}
+    \end{bemerkung}
+
+    \begin{satz}
+        \[
+        S := \{s_r  \mid r \in \Z_n\} 
+        \] 
+        ist kommutative Untergruppe von $S_n$. \\
+        Das bedeutet insbesondere: Die Reihenfolge von mehrmaligem Abheben ist egal (Kommutativität), und mehrmaliges Abheben bringt die Karten nicht mehr durcheinander als einmaliges Abheben (Abgeschlossenheit).
+    \end{satz}
+
+    \begin{beweis}
+        Es gilt (kurz nachrechnen oder am Abheben klarmachen):  
+       \[
+           s_{r_1} \circ s_{r_2} = s_{r_2} \circ s_{r_1} = (k \mapsto k + r_1 + r_2) = s_{r_1 + r_2}
+       ,\] 
+       womit die Kommutativität und Abgeschlossenheit gezeigt sind. \\
+       Zudem $s_{r}^{-1} = s_{-r} = s_{n-r},$ und $id = s_0 \in S$.
+    \end{beweis}
+
     \section{Zauberhafte Folgerung}
     Welcher Mischvorgang muss auf einen aus n Karten bestehenden Kartenstapel angewendet werden, um eine Permutation der Form $\phi_{a,b}$ zu erhalten? 
     \begin{enumerate}
