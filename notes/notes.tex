@@ -231,15 +231,20 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \textit{(Beispiel vorführen)}
     \begin{definition} 
     \begin{enumerate}
-    \item Sei $c$ ein Teiler von $c - 1$ und $a := (n - 1)/n$. Dann sind $a$ und $n$ teilerfremd und $R_c$ entspricht $\phi_{a,a}$.
+    \item Sei $c$ ein Teiler von $c - 1$ und $a := (n - 1)/c$. Dann sind $a$ und $n$ teilerfremd und $R_c$ entspricht $\phi_{a,a}$.
     \item Sei $c$ ein Teiler von $c + 1$ und $a := (n + 1)/n$. Dann sind $a$ und $n$ teilerfremd und $L_c$ entspricht $\phi_{-a,-1}$.
     \end{enumerate}
     \end{definition}
     \vspace{2mm}
     \begin{beweis}
     \begin{itemize}
-    \item i) Teilerfremdheit folgt direkt aus $ac = n - 1$. \\
-    Es gilt dann $n - ac = 1$ (Mit $ggT(a,b) = s\cdot a + t\cdot b, \quad s,t \in \mathbb{Z}$ folgt Teilerfremdheit von a und n. \\
+    \item i) Teilerfremdheit folgt aus $ac = n - 1$: \\
+	Angenommen $t$ teilt sowohl $a$ als auch $n$. Wir setzen $tk=a$ und $tk'=n$\\
+	\begin{align*}
+                    n - ac = 1 & \Leftrightarrow tk' - tkc = 1 \\
+                   &\Leftrightarrow t(k' - kc) = 1 \\
+                   &\Leftrightarrow $t ist Teiler von 1$
+                \end{align*}
     Aus der ursprünglichen Reihenfolge der Karten $(0, …,n-1)$ passiert durch $R_c$ folgendes: 
     \begin{figure}[htbp] 
   \centering
@@ -265,6 +270,13 @@ Beweis wie vorhin, aber gehe $a$ Karten zurück um von der Karte $k$ zur Karte $
     \underline{Erkenntnis aus 4.3, 4.4, 4.6 (umbenennen):} \\
     Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert n+1$ durch $x$ teilbar$\rbrace$. \\
     Wähle $a_1, …. a_r \in A_n$ und $a_1', …, a_l' \in B_n$ aus. Sei $a$ das Produkt aller $a_i$ und $a_j'$. Wähle $c_i$ bzw $c_j'$ sodass $c_ia_i = n-1$, bzw $c_j'a_j' = n+1$. \\
-    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig. \textit{Auf Erkenntnisse aus den jeweiligen Abschnitten verweisen}. \\
+    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig. \\
+    Wir machen uns klar dass das aus wirklich stimmt: \\
+    \begin{align*}
+        	R_{c1}R_{c2}(k) &= \phi_{a_1, b_1}  \circ \phi_{a_2, b_2}(k) \\
+        	& = \phi_{a_1, b_1}(a_2k + b_2) \\
+        	& = a_1(a_2k + b_2) + b_1 \\
+        	& = \phi_{a_1a_2, a_1b_2+b_1}(k)
+    \end{align*}
     Für uns von Bedeutung: $a=1$ oder $a=-1 \rightarrow$ Die Karten sind in der gleichen, bzw der gespiegelten zyklischen Reihenfolge.
 \end{document}
