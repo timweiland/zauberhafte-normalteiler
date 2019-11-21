@@ -75,7 +75,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \hspace{10mm}
 \begin{definition}[1.1]
         Sei $(G, \circ)$ eine Gruppe und $U \subset G$ eine Untergruppe. \\
-        U heißt \underline{Normalteiler} von G $\iff \forall g \in G: g U g^{-1} = U $
+        U heißt \textbf{Normalteiler} von G $\iff \forall g \in G: g U g^{-1} = U $
 \end{definition}
 
 \begin{bemerkung}
@@ -88,7 +88,7 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
 \end{bemerkung}
 
 \begin{definition}[2.2]
-        Der \underline{Normalisator} von $U$ in $G$ ist definiert als 
+        Der \textbf{Normalisator} von $U$ in $G$ ist definiert als 
           $N_G(U) := \{g \in G  \mid g U g^{-1} = U\}$
 \end{definition}
 \begin{satz}[2.3]
@@ -103,5 +103,19 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
         .\] 
         Insbesondere: \\
         $x_m \circ \ldots \circ x_1 \in U \implies u_m \circ x_m \circ u_{m-1} \circ x_{m-1} \circ \ldots \circ u_1 \circ x_1 \circ u_0 \in U$.
+    \end{satz}
+    
+    \begin{definition}[3.1]
+    Die Gruppe aller Permutationen mit $n$ Karten heißt die \textbf{symmetrische Gruppe} $S_n$. Jede Permutation lässt sich mit $\Z_n := \{0, \ldots, n-1\}$ als bijektive Abbildung $\phi : \Z_n &\to \Z_n$ identifizieren.
+    \end{definition}
+    
+    \begin{definition}[3.2]
+        Sei $r \in Z_n$. Die Permutation $s_r  : \Z_n &\longrightarrow \Z_n, \quad k  &\longmapsto s_r(k) = k + r \mod n$ entspricht einem zyklischen Shift im Kartenstapel. $s_r$ ist bijektiv, also $s_r \in S_n$.
+    \end{definition}
+    
+     \begin{satz}[3.4]
+        $S := \{s_r  \mid r \in \Z_n\}$
+        ist kommutative Untergruppe von $S_n$. \\
+        Das bedeutet insbesondere: Die Reihenfolge von mehrmaligem Abheben ist egal (Kommutativität), und mehrmaliges Abheben bringt die Karten nicht mehr durcheinander als einmaliges Abheben (Abgeschlossenheit).
     \end{satz}
 \end{document}
