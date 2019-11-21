@@ -1,0 +1,107 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[a4paper,left=3cm,right=3cm,top=3cm,
+bottom=4cm,bindingoffset=5mm]{geometry}
+
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{colonequals}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\usepackage{setspace}
+\setstretch{1.5}
+
+\declaretheorem[style=plain,numbered=no, shaded={rulecolor=Black,rulewidth=0.5pt,margin=0.5em,bgcolor={rgb}{1,1,1}}]{satz}
+\declaretheorem[style=plain,numberlike=satz]{proposition}
+\declaretheorem[style=plain,numberlike=satz]{lemma}
+\declaretheorem[style=plain,numberlike=satz]{korollar}
+
+\declaretheorem[style=definition,numbered=no]{definition}
+\declaretheorem[style=definition,numberlike=satz]{beispiel}
+\declaretheorem[style=definition,numbered=no]{bemerkung}
+\declaretheorem[style=definition,numbered=no]{erinnerung} \declaretheoremstyle[ spaceabove=-6pt,
+spacebelow=6pt,
+headfont=\normalfont\bfseries,
+bodyfont = \normalfont,
+postheadspace=1em,
+qed=$\blacksquare$,
+headpunct={:}]{myproofstyle} %<---- change this name
+\declaretheorem[name={Beweis}, style=myproofstyle, unnumbered]{beweis}
+
+\pagestyle{fancy} 
+\fancyhf{} 
+\fancyhead[L]{Text 1} 
+\fancyhead[C]{Text 2} 
+\fancyfoot[R]{\thepage} 
+
+\fancypagestyle{ErsteSeite}{% 
+   \fancyhf{}% 
+   \fancyhead[R]{Weiland Tim, Mercatoris Luc} 
+   \fancyhead[L]{28. November 2019} 
+} 
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\O}{\varnothing}
+\newcommand*{\longeq}{\ratio\Longleftrightarrow}
+
+\renewcommand{\labelenumi}{\roman{enumi})}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+\thispagestyle{ErsteSeite} 
+\begin{center}
+\framebox{\huge{Zauberhafte Normalteiler}}
+\end{center}
+\hspace{10mm}
+\begin{definition}[1.1]
+        Sei $(G, \circ)$ eine Gruppe und $U \subset G$ eine Untergruppe. \\
+        U heißt \underline{Normalteiler} von G $\iff \forall g \in G: g U g^{-1} = U $
+\end{definition}
+
+\begin{bemerkung}
+Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergruppe von $G$, in der $U$ Normalteiler ist. Wir wollen also $V$ finden sodass
+\begin{enumerate}
+        \item $U \subset V$ ($U$ ist in $V$ enthalten)
+        \item $U$ ist Normalteiler in $V$
+        \item Ist $V'$ eine weitere Untergruppe von $G$ die i) und ii) erfüllt, so gilt $V' \subset V$. ($V$ ist größtmöglich)
+    \end{enumerate}
+\end{bemerkung}
+
+\begin{definition}[2.2]
+        Der \underline{Normalisator} von $U$ in $G$ ist definiert als 
+          $N_G(U) := \{g \in G  \mid g U g^{-1} = U\}$
+\end{definition}
+\begin{satz}[2.3]
+        $N_G(U)$ ist Untergruppe von G und erfüllt die Eigenschaften i) bis iii).
+    \end{satz}
+
+\begin{satz}[2.4]
+        Seien $G, U$ und $N_G(U)$ wie gehabt. \\
+        Seien ferner $m \in \N$, $x_1, \ldots, x_m \in N_G(U)$ und $u_0, \ldots, u_m \in U$. Dann gilt für ein geeignetes $u \in U$:
+        \[
+            u_m \circ x_m \circ u_{m-1} \circ x_{m-1} \circ \ldots \circ u_1 \circ x_1 \circ u_0 = x_m \circ \ldots \circ  x_1 \circ u
+        .\] 
+        Insbesondere: \\
+        $x_m \circ \ldots \circ x_1 \in U \implies u_m \circ x_m \circ u_{m-1} \circ x_{m-1} \circ \ldots \circ u_1 \circ x_1 \circ u_0 \in U$.
+    \end{satz}
+\end{document}
