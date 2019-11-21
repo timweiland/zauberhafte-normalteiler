@@ -216,11 +216,124 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \begin{beweis}
         Es gilt (kurz nachrechnen oder am Abheben klarmachen):  
        \[
-           s_{r_1} \circ s_{r_2} = s_{r_2} \circ s_{r_1} = (k \mapsto k + r_1 + r_2) = s_{r_1 + r_2}
+           s_{r_1} \circ s_{r_2} = s_{r_2} \circ s_{r_1} = (k \mapsto k + r_1 + r_2 \mod n) = s_{r_1 + r_2}
        ,\] 
        womit die Kommutativität und Abgeschlossenheit gezeigt sind. \\
        Zudem $s_{r}^{-1} = s_{-r} = s_{n-r},$ und $id = s_0 \in S$.
     \end{beweis}
+
+    \section{Normalisator von $S$}
+    \begin{bemerkung}
+        Definiere
+        \[
+        \begin{align*}
+            \phi_a: \Z_n &\longrightarrow \Z_n \\
+            k &\longmapsto \phi_a(k) = ak \mod n
+        .\end{align*}
+        .\] 
+        Wann ist $\phi_a$ bijektiv? \\
+        Seien $a$ und $n$ teilerfremd. Dann gilt für $k, k' \in \Z_n:$ 
+        \begin{align*}
+            \phi_a(k) = \phi_a(k') &\iff ak = ak' \mod n \\
+                                   &\iff a(k-k') = 0 \mod n \\
+                                   &\iff k-k'  = 0 \mod n \\
+                                   &\iff k = k'
+        .\end{align*}
+        Also ist $\phi_a$ injektiv und damit surjektiv (Abbildung zwischen zwei gleichen endlichen Mengen). \\
+        Seien nun  $a$ und $n$ nicht teilerfremd. \\
+         $\implies \exists t \in \N: a = t \cdot k, n = t \cdot k'$ für geeignete $k, k' \in \N$. Dann gilt
+         \begin{align*}
+             \phi_a(k') = a k' = t k k' = n k &= 0 \mod n \\
+                                              &= \phi_a(0)
+        , \end{align*} 
+        also ist $\phi_a$ nicht injektiv. \\
+        Damit ist gezeigt: $\phi_a \text{ ist bijektiv} \iff $ $a$ und  $n$ teilerfremd.
+    \end{bemerkung}
+
+    \begin{definition}
+        Seien $a, b \in \Z.$ Definiere 
+        \[
+        \begin{align*}
+            \phi_{a,b}: \Z_n &\longrightarrow \Z_n \\
+            k &\longmapsto \phi_{a,b}(k) = ak + b \mod n
+        .\end{align*}
+        .\] 
+    \end{definition}
+
+    \begin{lemma}\label{phi_bij}
+        \[
+            a, n \text{ teilerfremd} \implies \phi_{a, b} \in S_n
+        .\] 
+    \end{lemma}
+    \begin{beweis}
+       Es gilt  $\phi_{a, b}(k) = ak + b \mod n = s_b(ak) = (s_b \circ \phi_a)(k) $. Es gilt $s_b \in S_n$ und $\phi_a \in S_n$ (haben Bijektivität eben gezeigt), also wegen der Abgeschlossenheit von $S_n$:  $\phi_{a, b} \in S_n$. \\ 
+    \end{beweis}
+
+    \begin{lemma} \label{phiab-equiv}
+        Sei $\phi \in S_n$ bijektiv. Es gilt:
+        \begin{align*}
+            \exists a \in \Z_n^{*}, b \in \Z_n : \phi = \phi_{a, b}
+            \iff \exists a \in \Z_n: \forall k \in \Z_n: \phi(k+1) = \phi(k)+a \mod n
+        .\end{align*}
+    \end{lemma}
+
+    \begin{beweis}
+        \begin{itemize}
+            \item \underline{,,$\implies$":} \\
+                Es gilt ($k \in \Z_n$ beliebig)
+                \[
+                    \phi(k+1) - \phi(k) = a(k+1) + b - (ak + b) = a
+                .\] 
+            \item \underline{,,$\impliedby$":} \\
+            Definiere $\phi(0) = b.$ Zeige per Induktion: $\phi = \phi_{a, b}$.
+        \begin{itemize}
+            \item \underline{Induktionsanfang ($k = 0$)}: \\
+                Es gilt $\phi(0) = b = a \cdot 0 + b = \phi_{a, b}(0)$.
+            \item \underline{Induktionsschritt ($k \implies k+1$):}
+                Es gilt
+                \begin{align*}
+                    \phi(k+1) &= \phi(k) +  a \mod n \\
+                              &\overset{I.V.}{=} \phi_{a,b}(k) + a \mod n \\
+                              &= ak + b + a \mod n \\
+                              &= a(k+1) + b \mod n \\
+                              &= \phi_{a, b}(k+1)
+                .\end{align*}
+        \end{itemize}
+        Da $\phi$ zudem injektiv ist, müssen $a$ und $n$ teilerfremd sein.
+        \end{itemize}
+    \end{beweis}
+    \begin{satz}
+        Es gilt
+        \[
+            N_{S_n}(S) = \{\phi_{a, b}  \mid a, b \in \N \text{ teilerfremd}\} 
+        .\] 
+    \end{satz}
+
+    \begin{beweis}
+        \begin{itemize}
+            \item \underline{,,$\supset$":} \\
+                Sei $\phi_{a,b}$ beliebig mit $a, n$ teilerfremd. Nach Lemma \ref{phi_bij} gilt dann $\phi_{a,b} \in S_n$.\\
+        Ferner gilt für beliebige $s_r \in S, k \in \Z_n:$
+        \begin{align*}
+            (\phi_{a, b} \circ s_r)(k) &= \phi_{a, b}(k + r) \\
+                                       &= a (k+r) + b \mod n \\
+                                       &= (ak + b) + ar \mod n \\
+                                       &= (s_{ar} \circ \phi_{a, b})(k)
+        .\end{align*}
+        Also $\phi_{a, b} \circ s_r \circ \phi_{a, b}^{-1} = s_{ar} \in S$. \\
+        $\implies \phi_{a, b} \in N_{S_n}(S)$.
+
+    \item \underline{,,$\subset $":} \\
+        Sei $\phi \in N_{S_n}(S)$. Dann gilt insbesondere für alle $k \in \Z_n$ mit geeignetem $s_a \in S$:
+        \begin{align*}
+            &\phantom{\iff} (\phi \circ s_1 \circ \phi^{-1})(k) = s_a(k) \\
+            &\iff (\phi \circ s_1)(k) = (s_a \circ \phi)(k) \\
+            &\iff \phi(k+1) = \phi(k) + a \mod n
+        .\end{align*}
+        Mit Lemma \ref{phiab-equiv} folgt die Behauptung.   
+    \end{itemize}
+    \end{beweis}
+
 
     \section{Zauberhafte Folgerung}
     Welcher Mischvorgang muss auf einen aus n Karten bestehenden Kartenstapel angewendet werden, um eine Permutation der Form $\phi_{a,b}$ zu erhalten? 
