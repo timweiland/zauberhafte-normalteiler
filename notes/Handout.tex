@@ -139,7 +139,7 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
     Seien $c,n \in \mathbb{N}$. Wir definieren folgende Mischoperationen: 
     \begin{enumerate}
      \item $R_c$: Teile die $n$ Karten von links nach rechts auf $c$ Stapel aus. Danach werden die Karten wieder aufgenommen, und zwar von rechts nach links. Ganz nach oben kommt also der Stapel ganz links.
-    \item $L_c$: Von links nach rechts austeilen, dieses Mal links nach rechts aufnehmen.  Ganz nach oben kommt also der Stapel ganz rechts.
+    \item $L_c$: Von links nach rechts austeilen, dieses Mal von links nach rechts aufnehmen.  Ganz nach oben kommt also der Stapel ganz rechts.
     \end{enumerate}
     \end{bemerkung}   
     
@@ -147,21 +147,21 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
     $R_c$ und $L_c$ wie gehabt. Dann gilt:
     \begin{enumerate}
     \item Wenn $c$ ein Teiler von $c - 1$ und $a := (n - 1)/c$, dann sind $a$ und $n$ teilerfremd und $R_c$ entspricht $\phi_{a,a}$.
-    \item Wenn $c$ ein Teiler von $c + 1$ und $a := (n + 1)/n$, dann sind $a$ und $n$ teilerfremd und $L_c$ entspricht $\phi_{-a,-1}$.
+    \item Wenn $c$ ein Teiler von $c + 1$ und $a := (n + 1)/c$, dann sind $a$ und $n$ teilerfremd und $L_c$ entspricht $\phi_{-a,-1}$.
     \end{enumerate}
     \end{satz} \\
     
     \begin{lemma}[5.3]
     Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert n+1$ durch $x$ teilbar$\rbrace$. \\
     Wähle $a_1, …. a_r \in A_n$ und $a_1', …, a_l' \in B_n$ aus. Sei $a$ das Produkt aller $a_i$ und $a_j'$. Wähle $c_i$ bzw $c_j'$ sodass $c_ia_i = n-1$, bzw $c_j'a_j' = n+1$. \\
-    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig.
+    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit unbekanntem $b$ falls das Abheben beliebig stattfindet.
     \end{lemma}
 
    \noindent \fbox{\parbox{\textwidth} {Für uns von zentraler Bedeutung: $a=1$ oder $a=-1$\\ 
    \begin{Large}$\Longrightarrow$ \end{Large} \textbf{Die Karten sind in der gleichen, bzw der gespiegelten zyklischen Reihenfolge.}}} \\
    
    \noindent \underline{Im Fall vom Originaltrick:} \\
-   $n=9, A_n=\lbrace 1,2,4,8\rbrace$. Wir wählen $a_1 = a_2 = a_3 = 4$ und somit $c_1 = c_2 = c_3 = 2$. \\
-   Es gilt $a = a_1 \cdot a_2 \cdot a_3 = 4 \cdot 4 \cdot 4 = 64 \equiv 1$ mod $9$. Wendet man $R_2$ also 3 mal auf den Kartenstapel an, so wird der ursprüngliche Zyklus beibehalten.
+   $n=9, \, A_n=\lbrace 1,2,4,8\rbrace$. Wir wählen $a_1 = a_2 = a_3 = 4$ und somit $c_1 = c_2 = c_3 = 2$. \\
+   Es gilt $a = a_1 \cdot a_2 \cdot a_3 = 4 \cdot 4 \cdot 4 = 64 \equiv 1$ mod $9$. Wendet man $R_2$ also 3 Mal auf den Kartenstapel an, so ist das äquivalent zu $\phi_{1,r} = s_r$. Das ganze entspricht also einem zyklischen Shift um $r$ Stellen.
    
 \end{document}
