@@ -305,7 +305,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
     \begin{satz}
         Es gilt
         \[
-            N_{S_n}(S) = \{\phi_{a, b}  \mid a, b \in \N \text{ teilerfremd}\} 
+            N_{S_n}(S) = \{\phi_{a, b}  \mid a, n \in \N \text{ teilerfremd}\} 
         .\] 
     \end{satz}
 
@@ -336,13 +336,16 @@ headpunct={:}]{myproofstyle} %<---- change this name
 
 
     \section{Zauberhafte Folgerung}
+    \begin{bemerkung}
     Welcher Mischvorgang muss auf einen aus n Karten bestehenden Kartenstapel angewendet werden, um eine Permutation der Form $\phi_{a,b}$ zu erhalten? 
+     \end{bemerkung}
     \begin{enumerate}
     \item Mischvorgang $R_c$: Sei $c \in \mathbb{N}$. Teile die $n$ Karten von links nach rechts auf $c$ Stapel aus. Danach werden die Karten wieder aufgenommen, und zwar von rechts nach links. Nach ganz oben kommt also der am weitesten links liegende Stapel.
     \item Mischvorgang $L_c$: Von links nach rechts austeilen, und auch von links nach rechts aufnehmen.
     \end{enumerate}
     \textit{(Beispiel vorführen)}
     \begin{definition} 
+   
     \begin{enumerate}
     \item Sei $c$ ein Teiler von $c - 1$ und $a := (n - 1)/c$. Dann sind $a$ und $n$ teilerfremd und $R_c$ entspricht $\phi_{a,a}$.
     \item Sei $c$ ein Teiler von $c + 1$ und $a := (n + 1)/n$. Dann sind $a$ und $n$ teilerfremd und $L_c$ entspricht $\phi_{-a,-1}$.
@@ -380,10 +383,12 @@ Beweis wie vorhin, aber gehe $a$ Karten zurück um von der Karte $k$ zur Karte $
     \textit{Beispiele vorführen}
     \end{itemize}
     \end {beweis}
-    \underline{Erkenntnis aus 4.3, 4.4, 4.6 (umbenennen):} \\
-    Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert n+1$ durch $x$ teilbar$\rbrace$. \\
+    \begin{lemma}
+   (Schlussfolgerung aus 2.4, 4.5, 5.2) \\
+    Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert \, n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert \, n+1$ durch $x$ teilbar$\rbrace$. \\
     Wähle $a_1, …. a_r \in A_n$ und $a_1', …, a_l' \in B_n$ aus. Sei $a$ das Produkt aller $a_i$ und $a_j'$. Wähle $c_i$ bzw $c_j'$ sodass $c_ia_i = n-1$, bzw $c_j'a_j' = n+1$. \\
-    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig. \\
+    Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit $b$ unbekannt falls abheben beliebig. 
+    \end{lemma}
     Wir machen uns klar dass das aus wirklich stimmt: \\
     \begin{align*}
         	R_{c1}R_{c2}(k) &= \phi_{a_1, b_1}  \circ \phi_{a_2, b_2}(k) \\
