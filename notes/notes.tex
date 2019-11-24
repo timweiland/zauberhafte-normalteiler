@@ -55,24 +55,49 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \begin{document}
     \section{Normalteiler}
     \begin{definition}
-        Sei $(G, \circ)$ eine Gruppe und $H \subset G$ eine Untergruppe. \\
+        Sei $(G, \circ)$ eine Gruppe und $U \subset G$ eine Untergruppe. \\
         H heißt Normalteiler
         \begin{align*}
-        &\longeq \forall g \in G \; \forall u \in H: g \circ u \circ g^{-1} \in H \\
-        &\iff \forall g \in G: g H g^{-1} = H \\
-        &\iff \forall g \in G: g H = H g
+        &\longeq \forall g \in G \; \forall u \in U: g \circ u \circ g^{-1} \in U
         .\end{align*}    
     \end{definition}
+    Der Sauberheit halber müsste das nächste Lemma ausgeführt werden, aber wenn die Zeit zu knapp ist sollte es weggelassen und in die Definition mit aufgenommen werden.
+    \begin{lemma}
+        Definiere die Verknüpfung von Elementen und Mengen: 
+        \[
+        x \circ A \circ y = \{x \circ a \circ y  \mid a \in A\}
+        .\] 
+        Dann ist H Normalteiler in G genau dann, wenn
+        \begin{align*}
+            &\phantom{\iff} \forall g \in G: g U g^{-1} = U \\
+            &\iff \forall g \in G: g U = U g
+        .\end{align*}
+    \end{lemma}
+
+    \begin{beweis}
+        \begin{itemize}
+            \item \underline{,,$\implies$''}: \\
+                    Es gilt $\forall g \in G \; \forall u \in U: g \circ u \circ g^{-1} \in U$, also $g U g^{-1} \subset U$. \\
+                    Ohnehin gilt $U \subset g U g^{-1}$, denn $\forall u \in U: u = e \circ u \circ e ^{-1} \in g U g^{-1}$.
+                \item \underline{,,$\impliedby $''}: \\
+                    Es gilt $\forall g \in G: g U g ^{-1} \subset U$, also per Definition $\forall g \in G \; \forall u \in U: g \circ u \circ g ^{-1} \in U$.
+        \end{itemize}
+        Weiterhin gilt
+        \[
+        g U g^{-1} = U \iff g U g^{-1} g = U g \iff g U = U g
+        .\] 
+    \end{beweis}
+
     \begin{beispiel}
         Einige Beispiele für Normalteiler:
         \begin{itemize}
             \item Die triviale Untergruppe $\{e\} $ ist immer Normalteiler, denn es gilt für alle $g \in G: g \circ \{e\} = \{g\} = \{e\} \circ g$.
             \item G ist immer Normalteiler in sich selbst, denn es gilt $\forall g \in G \; \forall g' \in G: g \circ g' \circ g^{-1} \in G$.
-           \item Ist G kommutativ, so ist jede Untergruppe $H \subset G$ Normalteiler, denn es gilt $\forall g \in G \; \forall u \in H: g \circ u \circ g ^{-1} = g \circ g ^{-1} \circ u = e \circ u = u \in H$.
+           \item Ist G kommutativ, so ist jede Untergruppe $U \subset G$ Normalteiler, denn es gilt $\forall g \in G \; \forall u \in U: g \circ u \circ g ^{-1} = g \circ g ^{-1} \circ u = e \circ u = u \in U$.
         \end{itemize}
     \end{beispiel}
     
-    # TODO: Faktorgruppe einbauen, ggf. zweite und dritte Definition in Definition 1 entsprechend verschieben
+    # TODO: Faktorgruppe einbauen?
 
     \section{Normalisator}
     Sei $\left( G, \circ  \right)$ Gruppe, $U \subset G$ Untergruppe. \\
