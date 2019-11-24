@@ -47,8 +47,9 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \fancyhf{} 
 \cfoot{\thepage} 
 \pagestyle{fancy} 
-\fancyhead[R]{Weiland Tim, Mercatoris Luc} 
+\fancyhead[R]{Tim Weiland, Luc Mercatoris} 
 \fancyhead[L]{28. November 2019} 
+\fancyhead[C]{Zauberhafte Normalteiler}
 
 
 \newcommand{\R}{\mathbb{R}}
@@ -56,7 +57,7 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\O}{\varnothing}
-\newcommand*{\longeq}{\ratio\Longleftrightarrow}
+\newcommand\logeq{\mathrel{\raisebox{.66pt}{:}}\Leftrightarrow}
 
 \renewcommand{\labelenumi}{\roman{enumi})}
 
@@ -65,16 +66,16 @@ headpunct={:}]{myproofstyle} %<---- change this name
 \begin{document}
 \thispagestyle{ErsteSeite} 
 \begin{center}
-\framebox{\huge{Zauberhafte Normalteiler}}
+    \huge{\fontfamily{put}\selectfont Zauberhafte Normalteiler}
 \end{center}
 \hspace{10mm}
 \begin{definition}[1.1]
         Sei $(G, \circ)$ eine Gruppe und $U \subset G$ eine Untergruppe. \\
-        U heißt \textbf{Normalteiler} von G $\iff \forall g \in G: g U g^{-1} = U $
+        U heißt \textbf{Normalteiler} von G $\logeq \forall g \in G: g U g^{-1} = U $
 \end{definition}
 
 \begin{bemerkung}
-Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergruppe von $G$, in der $U$ Normalteiler ist. Wir wollen also $V$ finden sodass
+Im Allgemeinen ist $U \subset G$ kein Normalteiler. Wir suchen größte Untergruppe von $G$, in der $U$ Normalteiler ist. Wir wollen also $V$ finden sodass:
 \begin{enumerate}
         \item $U \subset V$ ($U$ ist in $V$ enthalten)
         \item $U$ ist Normalteiler in $V$
@@ -84,7 +85,7 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
 
 \begin{definition}[2.2]
         Sei $(G, \circ)$ eine Gruppe und $U \subset G$ eine Untergruppe. Der \textbf{Normalisator} von $U$ in $G$ ist definiert als 
-          $N_G(U) := \{g \in G  \mid g U g^{-1} = U\}$
+          $N_G(U) := \{g \in G  \mid g U g^{-1} = U\}$.
 \end{definition}
 \begin{satz}[2.3]
         $N_G(U)$ ist Untergruppe von G und erfüllt die Eigenschaften i) bis iii).
@@ -115,24 +116,24 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
     \begin{definition}[4.1]
     Wir definieren $\phi_a: \Z_n &\longrightarrow \Z_n, \quad
             k &\longmapsto \phi_a(k) = ak \mod n$. \\
-    $\phi_a$ ist bijektiv $\Leftrightarrow$ $a$ und $n$ teilerfremd. In dem Fall gilt $\phi_a \in S_n$
+    $\phi_a$ ist bijektiv $\Leftrightarrow$ $a$ und $n$ teilerfremd. In diesem Fall gilt $\phi_a \in S_n$.
     \end{definition}
     
     \begin{definition}[4.2]
         Seien $a, b \in \Z.$ Definiere 
             $\phi_{a,b}: \Z_n &\longrightarrow \Z_n, \quad
             k &\longmapsto \phi_{a,b}(k) = ak + b \mod n$. \\
-       $\phi_{a,b}$ ist bijektiv $\Leftrightarrow a$ und $n$ teilerfremd.
+            $\phi_{a,b}$ ist bijektiv $\Leftrightarrow a$ und $n$ teilerfremd. In diesem Fall gilt $\phi_{a, b} \in S_n$.
     \end{definition}
     
     \begin{lemma}[4.4]
         Sei $\phi \in S_n$ bijektiv. Dann gilt: \\
         $\exists a \in \Z_n^{*}, b \in \Z_n : \phi = \phi_{a, b}
-        \iff \exists a \in \Z_n: \forall k \in \Z_n: \phi(k+1) = \phi(k)+a \mod n$
+        \iff \exists a \in \Z_n \; \forall k \in \Z_n: \phi(k+1) = \phi(k)+a \mod n$.
     \end{lemma}
     
     \begin{satz}[4.5]
-            Der Normalisator von $S$ in $S_n$ ist $N_{S_n}(S) = \{\phi_{a, b}  \mid a, b \in \N \text{ teilerfremd}\}$
+            Der Normalisator von $S$ in $S_n$ ist $N_{S_n}(S) = \{\phi_{a, b}  \mid a, b \in \N \text{ teilerfremd}\}$.
        
     \end{satz}
     \begin{bemerkung}[5.1] 
@@ -152,7 +153,7 @@ Im Allgemeinen ist $U \subset G$ kein Normalteiler Wir suchen größte Untergrup
     \end{satz} \\
     
     \begin{lemma}[5.3]
-    Für $n \in $ \mathbb{N} sei $A_n := \lbrace x \big\vert n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x \big\vert n+1$ durch $x$ teilbar$\rbrace$. \\
+    Für $n \in $ \mathbb{N} sei $A_n := \lbrace x  \mid  n-1$ durch $x$ teilbar$\rbrace$ und $B_n := \lbrace x  \mid  n+1$ durch $x$ teilbar$\rbrace$. \\
     Wähle $a_1, …. a_r \in A_n$ und $a_1', …, a_l' \in B_n$ aus. Sei $a$ das Produkt aller $a_i$ und $a_j'$. Wähle $c_i$ bzw $c_j'$ sodass $c_ia_i = n-1$, bzw $c_j'a_j' = n+1$. \\
     Führe auf einen Kartenstapel $R_{c_1}, …, R_{c_r}$ und $L_{c_1'}, …, L_{c_l'}$ in beliebiger Reihenfolge durch. Dazwischen darf noch zusätzlich abgehoben werden. Der Kartenstapel befindet sich in der Permutation $\phi_{a,b}$, mit unbekanntem $b$ falls das Abheben beliebig stattfindet.
     \end{lemma}
